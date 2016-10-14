@@ -21,7 +21,7 @@ datadog-repo:
 
 datadog-agent-pkg:
   pkg.installed:
-    - name: datadog-name
+    - name: datadog-agent
 
 datadog-agent:
   service.running:
