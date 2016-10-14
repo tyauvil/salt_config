@@ -5,3 +5,6 @@ packages:
       - nmap
       - samba
       - zfs
+      - zfs-dkms
+      - ffmpeg
+      - apt-transport-https
