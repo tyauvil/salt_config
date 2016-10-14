@@ -2,7 +2,8 @@ docker-engine:
   pkg.installed:
     - version: {{ pillar['docker']['version'] }}~{{ grains['oscodename'] }}
 
-pkgrepo.managed:
+docker-repo:
+  pkgrepo.managed:
     - humanname: Docker Apt Repo
     - name: deb https://apt.dockerproject.org/repo ubuntu-{{ grains['oscodename'] }} main
     - dist: ubuntu-{{ grains['oscodename']  }}
@@ -12,3 +13,9 @@ pkgrepo.managed:
 
 python-pip:
   pkg.installed
+
+docker-compose:
+  pip.installed:
+  - require:
+    - pkg: python-pip
+

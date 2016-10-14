@@ -3,3 +3,5 @@ packages:
     - pkgs:
       - htop
       - nmap
+      - samba
+      - zfs
