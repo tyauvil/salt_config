@@ -10,17 +10,18 @@ datadog-repo:
   file.managed:
     - source: salt://files/datadog/docker_daemon.yaml
     - listen_in:
-        - service: datadog-agent-service
+        - service: datadog-agent
 
 /etc/dd-agent/datadog.conf:
   file.managed:
     - source: salt://templates/datadog/datadog.conf
     - template: jinja
     - listen_in:
-        - service: datadog-agent-service
+        - service: datadog-agent
 
 datadog-agent-pkg:
-  pkg.installed
+  pkg.installed:
+    - name: datadog-name
 
 datadog-agent:
   service.running:
