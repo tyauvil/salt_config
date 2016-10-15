@@ -8,7 +8,7 @@
 traefik:
   file.managed:
     - name: /etc/systemd/system/traefik.service
-    - source: salt://templates/systemd/traefik.service
+    - source: salt://templates/traefik/traefik.service
     - template: jinja
   service.running:
     - enable: True
