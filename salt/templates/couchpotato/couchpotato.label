@@ -1,3 +1,3 @@
 traefik.backend=couchpotato
-traefik.frontend.rule=Host:couchpotato.{{ pillar['traefik']['domain']}}
+traefik.frontend.rule=Host:couchpotato.{{ grains['traefik']['domain']}}
 traefik.port={{ pillar['couchpotato']['port'] }}

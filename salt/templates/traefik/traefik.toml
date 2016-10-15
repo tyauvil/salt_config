@@ -5,5 +5,5 @@ address = ":8081"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "{{ pillar['traefik']['domain'] }}"
+domain = "{{ grains['traefik']['domain'] }}"
 watch = true
