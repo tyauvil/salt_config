@@ -15,5 +15,3 @@ traefik:
     - enable: True
     - require:
       - pkg: docker-engine
-    - watch:
-        - file: /etc/docker/daemon.json
