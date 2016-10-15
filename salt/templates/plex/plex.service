@@ -12,7 +12,7 @@ ExecStartPre=/usr/bin/docker pull {{ pillar['plex']['image'] }}:{{ pillar['plex'
 ExecStart=/usr/bin/docker run --rm --name %n \
           --env-file={{ pillar['plex']['env_file'] }} \
           --label-file={{ pillar['plex']['label_file'] }} \
-          --publish={{ pillar['plex']['port'] }}:{{ pillar['plex']['port'] }}
+          --publish={{ pillar['plex']['port'] }}:{{ pillar['plex']['port'] }} \
           --volume={{ pillar['plex']['config'] }}:/config \
           --volume={{ pillar['plex']['media'] }}:/media \
           {{ pillar['plex']['image'] }}:{{ pillar['plex']['tag'] }}
