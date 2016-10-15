@@ -12,7 +12,7 @@ ExecStartPre=/usr/bin/docker pull traefik:{{ pillar['traefik']['tag'] }}
 ExecStart=/usr/bin/docker run --rm --name %n \
           --publish="{{ pillar['traefik']['http_port'] }}:80" \
           --publish="{{ pillar['traefik']['https_port'] }}:443" \
-          --publish="{{ pillar['traefik']['dashboard_port'] }}:8080" \
+          --publish="{{ pillar['traefik']['dashboard_port'] }}:8081" \
           --volume={{ pillar['traefik']['config_file'] }}:/traefik.toml \
           --volume=/var/run/docker.sock:/var/run/docker.sock \
           traefik:{{ pillar['traefik']['tag'] }}
