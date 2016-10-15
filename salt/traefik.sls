@@ -1,6 +1,7 @@
 /etc/traefik/traefik.toml:
   file.managed:
     - source: salt://templates/traefik/traefik.toml
+    - template: jinja
     - makedirs: True
     - listen_in:
         - service: traefik
