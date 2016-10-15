@@ -1,6 +1,6 @@
 /etc/traefik/traefik.toml:
   file.managed:
-    - source: salt://files/traefik/traefik.toml
+    - source: salt://templates/traefik/traefik.toml
     - makedirs: True
     - listen_in:
         - service: traefik
