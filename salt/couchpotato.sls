@@ -1,6 +1,6 @@
 {{ pillar['couchpotato']['env_file'] }}:
   file.managed:
-    - source: salt://templates/couchpotato/couchpotato.label
+    - source: salt://templates/couchpotato/couchpotato.env
     - template: jinja
     - makedirs: True
     - listen_in:

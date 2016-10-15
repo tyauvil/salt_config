@@ -1,6 +1,6 @@
 {{ pillar['nzbget']['env_file'] }}:
   file.managed:
-    - source: salt://templates/nzbget/nzbget.label
+    - source: salt://templates/nzbget/nzbget.env
     - template: jinja
     - makedirs: True
     - listen_in:
