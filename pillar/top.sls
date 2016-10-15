@@ -6,3 +6,4 @@ base:
     - nzbget
     - sonarr
     - couchpotato
+    - plex
