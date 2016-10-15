@@ -2,4 +2,4 @@ base:
   '*':
     - core
     - docker
-
+    - datadog

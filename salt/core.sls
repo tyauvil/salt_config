@@ -8,3 +8,4 @@ packages:
       - zfs-dkms
       - ffmpeg
       - apt-transport-https
+      - ipmitool
