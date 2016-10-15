@@ -1,0 +1,21 @@
+[Unit]
+Description=plex
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull {{ pillar['plex']['image'] }}:{{ pillar['plex']['tag'] }}
+ExecStart=/usr/bin/docker run --rm --name %n \
+          --env-file={{ pillar['plex']['env_file'] }} \
+          --label-file={{ pillar['plex']['label_file'] }} \
+          --publish={{ pillar['plex']['port'] }}:{{ pillar['plex']['port'] }}
+          --volume={{ pillar['plex']['config'] }}:/config \
+          --volume={{ pillar['plex']['media'] }}:/media \
+          {{ pillar['plex']['image'] }}:{{ pillar['plex']['tag'] }}
+
+[Install]
+WantedBy=multi-user.target
