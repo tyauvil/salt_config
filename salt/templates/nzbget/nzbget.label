@@ -1,3 +1,3 @@
 traefik.backend=nzbget
 traefik.frontend.rule=Host:nzbget.{{ pillar['traefik']['domain']}}
-traefik.port={{ pillar['sonarr']['port'] }}
+traefik.port={{ pillar['nzbget']['port'] }}
