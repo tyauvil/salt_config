@@ -1,4 +1,4 @@
-/etc/traefik/traefik.toml:
+{{ pillar['traefik']['config_file'] }}:
   file.managed:
     - source: salt://templates/traefik/traefik.toml
     - template: jinja
@@ -11,6 +11,10 @@ traefik:
     - name: /etc/systemd/system/traefik.service
     - source: salt://templates/traefik/traefik.service
     - template: jinja
+  module.run:
+    - name: service.systemctl_reload
+    - onchanges:
+      - file: /etc/systemd/system/traefik.service
   service.running:
     - enable: True
     - require:

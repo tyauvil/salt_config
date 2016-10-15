@@ -8,14 +8,13 @@ TimeoutStartSec=0
 Restart=always
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStartPre=/usr/bin/docker pull traefik:{{ pillar['traefik']['tag'] }}
 ExecStart=/usr/bin/docker run --rm --name %n \
           --publish="{{ pillar['traefik']['http_port'] }}:80" \
           --publish="{{ pillar['traefik']['https_port'] }}:443" \
           --publish="{{ pillar['traefik']['dashboard_port'] }}:8081" \
           --volume={{ pillar['traefik']['config_file'] }}:/traefik.toml \
           --volume=/var/run/docker.sock:/var/run/docker.sock \
-          traefik:{{ pillar['traefik']['tag'] }}
+          {{ pillar['traefik']['image'] }}:{{ pillar['traefik']['tag'] }}
 
 [Install]
 WantedBy=multi-user.target

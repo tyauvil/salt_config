@@ -1,0 +1,3 @@
+traefik.backend=sonarr
+traefik.frontend.rule=Host:sonarr.{{ pillar['traefik']['domain']}}
+traefik.port={{ pillar['sonarr']['port'] }}

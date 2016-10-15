@@ -1,0 +1,22 @@
+[Unit]
+Description=sonarr
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull {{ pillar['sonarr']['image'] }}:{{ pillar['sonarr']['tag'] }}
+ExecStart=/usr/bin/docker run --rm --name %n \
+          --env-file={{ pillar['sonarr']['env_file'] }} \
+          --label-file={{ pillar['sonarr']['label_file'] }} \
+          --volume=/dev/rtc:/dev/rtc:ro \
+          --volume={{ pillar['sonarr']['config'] }}:/config \
+          --volume={{ pillar['sonarr']['downloads'] }}:/downloads \
+          --volume={{ pillar['sonarr']['tv'] }}:/tv \
+          {{ pillar['sonarr']['image'] }}:{{ pillar['sonarr']['tag'] }}
+
+[Install]
+WantedBy=multi-user.target

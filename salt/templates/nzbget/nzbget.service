@@ -1,0 +1,20 @@
+[Unit]
+Description=nzbget
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull {{ pillar['nzbget']['image'] }}:{{ pillar['nzbget']['tag'] }}
+ExecStart=/usr/bin/docker run --rm --name %n \
+          --env-file={{ pillar['nzbget']['env_file'] }} \
+          --label-file={{ pillar['nzbget']['label_file'] }} \
+          --volume={{ pillar['nzbget']['config'] }}:/config \
+          --volume={{ pillar['nzbget']['downloads'] }}:/downloads \
+          {{ pillar['nzbget']['image'] }}:{{ pillar['nzbget']['tag'] }}
+
+[Install]
+WantedBy=multi-user.target
