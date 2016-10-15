@@ -1,6 +1,6 @@
 {{ pillar['sonarr']['env_file'] }}:
   file.managed:
-    - source: salt://templates/sonarr/sonarr.label
+    - source: salt://templates/sonarr/sonarr.env
     - template: jinja
     - makedirs: True
     - listen_in:
