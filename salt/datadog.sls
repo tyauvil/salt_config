@@ -6,6 +6,10 @@ datadog-repo:
     - keyid: C7A7DA52
     - file: /etc/apt/sources.list.d/datadog.list
 
+datadog-agent-pkg:
+  pkg.installed:
+    - name: datadog-agent
+
 /etc/dd-agent/conf.d/docker_daemon.yaml:
   file.managed:
     - source: salt://files/datadog/docker_daemon.yaml
@@ -18,10 +22,6 @@ datadog-repo:
     - template: jinja
     - listen_in:
         - service: datadog-agent
-
-datadog-agent-pkg:
-  pkg.installed:
-    - name: datadog-agent
 
 datadog-agent:
   service.running:
