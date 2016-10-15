@@ -4,3 +4,6 @@ base:
     - docker
     - datadog
     - traefik
+    - nzbget
+    - sonarr
+    - couchpotato
