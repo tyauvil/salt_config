@@ -7,3 +7,4 @@ base:
     - sonarr
     - couchpotato
     - plex
+    - openvpn

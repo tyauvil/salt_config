@@ -1,0 +1,21 @@
+[Unit]
+Description=openvpn
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull {{ pillar['openvpn']['image'] }}:{{ pillar['openvpn']['tag'] }}
+ExecStart=/usr/bin/docker run --rm --name %n \
+          --env-file={{ pillar['openvpn']['env_file'] }} \
+          --label-file={{ pillar['openvpn']['label_file'] }} \
+          --volume={{ pillar['openvpn']['config'] }}:/etc/openvpn \
+          --cap-add=NET_ADMIN \
+          --publish={{ grains['openvpn']['port'] }}:1194/udp \
+          {{ pillar['openvpn']['image'] }}:{{ pillar['openvpn']['tag'] }}
+
+[Install]
+WantedBy=multi-user.target
