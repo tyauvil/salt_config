@@ -18,6 +18,10 @@
     - listen_in:
         - service: openvpn
 
+{{ pillar['openvpn']['config'] }}:
+  file.directory:
+    - makedirs: True
+
 openvpn:
   file.managed:
     - name: /etc/systemd/system/openvpn.service
