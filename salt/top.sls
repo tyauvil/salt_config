@@ -9,3 +9,4 @@ base:
     - couchpotato
     - plex
     - openvpn
+    - postfix
