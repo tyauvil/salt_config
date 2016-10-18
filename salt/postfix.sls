@@ -1,7 +1,8 @@
 postfix_pkgs:
   pkg.installed:
-    - postfix
-    - mailutils
+    - pkgs:
+      - postfix
+      - mailutils
 
 /etc/postfix/main.cnf:
   file.managed:
