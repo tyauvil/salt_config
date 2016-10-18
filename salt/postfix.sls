@@ -4,9 +4,9 @@ postfix_pkgs:
       - postfix
       - mailutils
 
-/etc/postfix/main.cnf:
+/etc/postfix/main.cf:
   file.managed:
-    - source: salt://templates/postfix/main.cnf
+    - source: salt://templates/postfix/main.cf
     - template: jinja
     - listen_in:
       - service: postfix
