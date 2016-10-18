@@ -10,3 +10,4 @@ base:
     - plex
     - openvpn
     - postfix
+    - smartd

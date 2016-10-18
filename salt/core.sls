@@ -9,3 +9,4 @@ packages:
       - ffmpeg
       - apt-transport-https
       - ipmitool
+      - smartmontools
