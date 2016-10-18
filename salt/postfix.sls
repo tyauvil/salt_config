@@ -27,4 +27,4 @@ postfix:
     - enable: True
     - require:
       - pkg: docker-engine
-      - file: /etc/postfix/main.cnf
+      - file: /etc/postfix/main.cf
