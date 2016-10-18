@@ -24,7 +24,7 @@ postmap:
 
 postfix:
   service.running:
-    - enabled: True
+    - enable: True
     - require:
       - pkg: docker-engine
       - file: /etc/postfix/main.cnf
